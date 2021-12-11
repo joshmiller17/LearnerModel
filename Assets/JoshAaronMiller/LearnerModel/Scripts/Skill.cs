@@ -12,7 +12,6 @@ namespace JoshAaronMiller.LearnerModel
     public class Skill
     {
         List<Skill> prerequisites = new List<Skill>();
-        List<Skill> postrequisites = new List<Skill>();
         List<Skill> relatedSkills = new List<Skill>();
         Guid guid;
 

@@ -40,7 +40,7 @@ public class Demo : MonoBehaviour
      *   3b. Options are only correct mood
      *   3c. Options are only correct tense
      *   3d. Options can be any mood or tense
-     * 4. Given correct form, choose English translation (based on VerbEnglish with I swapped for correct number and person)
+     * 4. Given correct form, choose English translation (based on VerbEnglish with I swapped for correct number and person) -- TODO account for special cases in Indicative
      *   4a. Options are only correct mood and tense
      *   4b. Options are only correct mood
      *   4c. Options are only correct tense
@@ -60,9 +60,9 @@ public class Demo : MonoBehaviour
         EsToEnFormHard
     };
 
-    static readonly int rowsPerVerb = 18;
     static readonly int numOptions = 4;
 
+    // TODO redo this data structure, maybe some kind of database structure?
     List<List<string>> verbs = new List<List<string>>();
     int countQuestionTypes;
 
@@ -95,13 +95,21 @@ public class Demo : MonoBehaviour
         //TODO
         // every word is a skill
         // every tense is a skill
+        //   tense preqreuisites: Present > Preterite > Imperfect > Future > Conditional
+        // Preterite > Preterite (Archaic)
+        // Present > Present Perfect
+        // Future > Future Perfect
+        // Preterite > Past Perfect
+        // Conditional > Conditional Perfect
         // every mood is a skill
+        //   mood prerequisites: Indicative > Imperative > Subjunctive
         // every form is a skill
+        //   forms have related skills of other forms that share number or person
     }
 
     void DefineItems()
     {
-        //TODO
+        //TODO every row is an item
     }
 
     /// <summary>
