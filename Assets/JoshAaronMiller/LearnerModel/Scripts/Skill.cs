@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 namespace JoshAaronMiller.LearnerModel
@@ -13,5 +14,11 @@ namespace JoshAaronMiller.LearnerModel
         List<Skill> prerequisites = new List<Skill>();
         List<Skill> postrequisites = new List<Skill>();
         List<Skill> relatedSkills = new List<Skill>();
+        Guid guid;
+
+        public Skill()
+        {
+            guid = Guid.NewGuid();
+        }
     }
 }

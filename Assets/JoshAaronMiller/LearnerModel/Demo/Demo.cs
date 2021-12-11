@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using JoshAaronMiller.LearnerModel;
 
 public class Demo : MonoBehaviour
 {
@@ -83,6 +84,24 @@ public class Demo : MonoBehaviour
             Text option = button.GetChild(0).gameObject.GetComponent<Text>();
             options.Add(option);
         }
+
+        //TODO try loading, only define these if no load available
+        DefineSkills();
+        DefineItems();
+    }
+
+    void DefineSkills()
+    {
+        //TODO
+        // every word is a skill
+        // every tense is a skill
+        // every mood is a skill
+        // every form is a skill
+    }
+
+    void DefineItems()
+    {
+        //TODO
     }
 
     /// <summary>
@@ -113,6 +132,8 @@ public class Demo : MonoBehaviour
         // TODO visual feedback for right or wrong with correct answer
 
         //TODO construct new question
+
+        // TODO save data
     }
 
     /// <summary>

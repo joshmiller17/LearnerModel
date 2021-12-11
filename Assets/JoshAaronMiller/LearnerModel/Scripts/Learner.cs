@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace JoshAaronMiller.LearnerModel
 {
@@ -12,5 +13,12 @@ namespace JoshAaronMiller.LearnerModel
         Dictionary<Skill, float> skillMasteries = new Dictionary<Skill, float>();
         Dictionary<Item, History> itemHistories = new Dictionary<Item, History>();
         Dictionary<Skill, History> skillHistories = new Dictionary<Skill, History>();
+
+        Guid guid;
+
+        public Learner()
+        {
+            guid = Guid.NewGuid();
+        }
     }
 }
