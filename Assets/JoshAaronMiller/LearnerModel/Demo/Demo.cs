@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Demo : MonoBehaviour
 {
     public TextAsset DataCsv;
+
+    public GameObject QuestionObj;
+    public GameObject OptionPanelObj;
 
     enum Column
     {
@@ -27,16 +31,65 @@ public class Demo : MonoBehaviour
         PastParticipleEnglish
     };
 
+    /* Question types:
+     * 1. Given InfinitiveEnglish, choose correct Infinitive
+     * 2. Given Infinitive, choose correct InfinitiveEnglish
+     * 3. Given InfinitiveEnglish, MoodEnglish, and TenseEnglish, number and person, choose correct form
+     *   3a. Options are only correct mood and tense
+     *   3b. Options are only correct mood
+     *   3c. Options are only correct tense
+     *   3d. Options can be any mood or tense
+     * 4. Given correct form, choose English translation (based on VerbEnglish with I swapped for correct number and person)
+     *   4a. Options are only correct mood and tense
+     *   4b. Options are only correct mood
+     *   4c. Options are only correct tense
+     *   4d. Options can be any mood or tense
+     */
+    enum QuestionType
+    {
+        EnToEsInfinitive,
+        EsToEnInfinitive,
+        EntoEsFormEasy,
+        EnToEsFormTensePractice,
+        EnToEsFormMoodPractice,
+        EnToEsFormHard,
+        EsToEnFormEasy,
+        EsToEnFormTensePractice,
+        EsToEnFormMoodPractice,
+        EsToEnFormHard
+    };
+
     static readonly int rowsPerVerb = 18;
+    static readonly int numOptions = 4;
 
     List<List<string>> verbs = new List<List<string>>();
+    int countQuestionTypes;
+
+    Text question;
+    List<Text> options;
+    int correctOption;
 
     void Start()
     {
         verbs = ReadCsv(DataCsv);
         verbs.RemoveAt(0); //delete header
+
+        countQuestionTypes = System.Enum.GetValues( typeof(QuestionType)).Length;
+
+        question = QuestionObj.GetComponent<Text>();
+        for (int child = 0; child < numOptions; child++)
+        {
+            Transform button = OptionPanelObj.transform.GetChild(child);
+            Text option = button.GetChild(0).gameObject.GetComponent<Text>();
+            options.Add(option);
+        }
     }
 
+    /// <summary>
+    /// Given a TextAsset representing a CSV, return it as a 2D list of strings.
+    /// </summary>
+    /// <param name="file">The CSV file.</param>
+    /// <returns>The CSV as a 2D list of strings.</returns>
     List<List<string>> ReadCsv(TextAsset file)
     {
         List<string> rows = new List<string>(DataCsv.text.Split(new char[] { '\r', '\n' }));
@@ -49,4 +102,44 @@ public class Demo : MonoBehaviour
         return ret;
     }
 
+    /// <summary>
+    /// Log the user's selection, show the right answer, and construct a new question.
+    /// </summary>
+    /// <param name="optionSelected">The index of their selected option.</param>
+    public void AnswerCallback(int optionSelected)
+    {
+        //TODO log the answer with the learner model
+
+        // TODO visual feedback for right or wrong with correct answer
+
+        //TODO construct new question
+    }
+
+    /// <summary>
+    /// Choose a question type, then set the visuals and backend logic for the question.
+    /// </summary>
+    void ConstructQuestion()
+    {
+        //TODO pick a question type using learner model
+
+        //TODO generate options using learner model
+
+        //TODO call DisplayQuestion
+
+        //TODO set correctOption
+    }
+
+    /// <summary>
+    /// Show the question.
+    /// </summary>
+    /// <param name="q">Question text.</param>
+    /// <param name="os">Option texts.</param>
+    void DisplayQuestion(string q, List<string> o)
+    {
+        question.text = q;
+        for (int opt = 0; opt < numOptions; opt++)
+        {
+            options[opt].text = o[opt];
+        }
+    }
 }
