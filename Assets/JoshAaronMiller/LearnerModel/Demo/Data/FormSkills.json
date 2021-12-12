@@ -1,0 +1,42 @@
+{
+	"Skills":[
+	
+	
+	{
+		"Prerequisites":[],
+		"RelatedSkills":["FirstPlural", "SecondSingular", "ThirdSingular"],
+		"Name":"FirstSingular"
+	},
+	
+		{
+		"Prerequisites":[],
+		"RelatedSkills":["SecondPlural", "FirstSingular", "ThirdSingular"],
+		"Name":"SecondSingular"
+	},
+	
+		{
+		"Prerequisites":[],
+		"RelatedSkills":["ThirdPlural", "FirstSingular", "SecondSingular"],
+		"Name":"ThirdSingular"
+	},
+	
+		{
+		"Prerequisites":[],
+		"RelatedSkills":["FirstSingular", "SecondPlural", "ThirdPlural"],
+		"Name":"FirstPlural"
+	},
+	
+		{
+		"Prerequisites":[],
+		"RelatedSkills":["SecondSingular", "FirstPlural", "ThirdPlural"],
+		"Name":"SecondPlural"
+	},
+	
+		{
+		"Prerequisites":[],
+		"RelatedSkills":["ThirdSingular", "FirstPlural", "SecondPlural"],
+		"Name":"ThirdPlural"
+	}
+	
+	]
+}

@@ -1242,6 +1242,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DataCsv: {fileID: 4900000, guid: c6bd1a304755b704b8c6b0dbe5417a18, type: 3}
+  FormSkills: {fileID: 4900000, guid: d2630771f7fbfe04bab565ae30be0e72, type: 3}
+  MoodSkills: {fileID: 4900000, guid: 968e0d2f4eb918e4396c3d9eed90e02e, type: 3}
+  TenseSkills: {fileID: 4900000, guid: 2b42c0282af5ad5478efe67c52ef94fb, type: 3}
   QuestionObj: {fileID: 1342106232}
   OptionPanelObj: {fileID: 1728689574}
 --- !u!4 &1459502623

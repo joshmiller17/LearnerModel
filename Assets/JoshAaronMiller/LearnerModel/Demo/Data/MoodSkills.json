@@ -1,0 +1,25 @@
+{
+	"Skills":[
+	
+	
+	{
+		"Prerequisites":[],
+		"RelatedSkills":[],
+		"Name":"Indicative"
+	},
+	
+		{
+		"Prerequisites":["Indicative"],
+		"RelatedSkills":[],
+		"Name":"Imperative"
+	},
+	
+		{
+		"Prerequisites":["Imperative"],
+		"RelatedSkills":[],
+		"Name":"Subjunctive"
+	}
+	
+	
+	]
+}

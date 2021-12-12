@@ -7,6 +7,9 @@ using JoshAaronMiller.LearnerModel;
 public class Demo : MonoBehaviour
 {
     public TextAsset DataCsv;
+    public TextAsset FormSkills;
+    public TextAsset MoodSkills;
+    public TextAsset TenseSkills;
 
     public GameObject QuestionObj;
     public GameObject OptionPanelObj;
@@ -62,7 +65,6 @@ public class Demo : MonoBehaviour
 
     static readonly int numOptions = 4;
 
-    // TODO redo this data structure, maybe some kind of database structure?
     List<List<string>> verbs = new List<List<string>>();
     int countQuestionTypes;
 
@@ -98,18 +100,24 @@ public class Demo : MonoBehaviour
     void DefineSkills()
     {
         //TODO
-        // every word is a skill
-        // every tense is a skill
-        //   tense preqreuisites: Present > Preterite > Imperfect > Future > Conditional
-        // Preterite > Preterite (Archaic)
-        // Present > Present Perfect
-        // Future > Future Perfect
-        // Preterite > Past Perfect
-        // Conditional > Conditional Perfect
-        // every mood is a skill
-        //   mood prerequisites: Indicative > Imperative > Subjunctive
-        // every form is a skill
-        //   forms have related skills of other forms that share number or person
+
+        // add every word as a skill
+        foreach (List<string> row in verbs)
+        {
+            string infinitive = row[(int)Column.Infinitive];
+            if (!spanish.HasSkill(infinitive))
+            {
+                Skill word = new Skill();
+                word.Name = infinitive;
+                spanish.AddSkill(word);
+            }
+        }
+
+        // add tenses, moods, and forms as skills
+        Skillset tenses = Skillset.SkillsetFromJson(TenseSkills.text);
+        Skillset moods = Skillset.SkillsetFromJson(MoodSkills.text);
+        Skillset forms = Skillset.SkillsetFromJson(FormSkills.text);
+        spanish += tenses + moods + forms;
     }
 
     void DefineItems()

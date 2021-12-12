@@ -1,0 +1,66 @@
+{
+	"Skills":[
+	
+	
+	{
+		"Prerequisites":[],
+		"RelatedSkills":[],
+		"Name":"Present"
+	},
+	
+	{
+		"Prerequisites":["Present"],
+		"RelatedSkills":[],
+		"Name":"Preterite"
+	},
+	
+	{
+		"Prerequisites":["Preterite"],
+		"RelatedSkills":[],
+		"Name":"Imperfect"
+	},
+	
+	{
+		"Prerequisites":["Imperfect"],
+		"RelatedSkills":[],
+		"Name":"Future"
+	},
+	
+	{
+		"Prerequisites":["Future"],
+		"RelatedSkills":[],
+		"Name":"Conditional"
+	},
+	
+	{
+		"Prerequisites":["Preterite"],
+		"RelatedSkills":[],
+		"Name":"Preterite (Archaic)"
+	},
+	
+	{
+		"Prerequisites":["Present"],
+		"RelatedSkills":["Preterite"],
+		"Name":"Present Perfect"
+	},
+	
+		{
+		"Prerequisites":["Future", "Present Perfect"],
+		"RelatedSkills":[],
+		"Name":"Future Perfect"
+	},
+	
+		{
+		"Prerequisites":["Preterite", "Present Perfect"],
+		"RelatedSkills":[],
+		"Name":"Past Perfect"
+	},
+	
+		{
+		"Prerequisites":["Conditional", "Present Perfect"],
+		"RelatedSkills":[],
+		"Name":"Conditional Perfect"
+	}
+	
+	]
+}
