@@ -74,6 +74,7 @@ public class Demo : MonoBehaviour
 
     Learner learner;
     Skillset spanish;
+    List<SpanishPracticeItem> allItems = new List<SpanishPracticeItem>();
 
     void Start()
     {
@@ -99,8 +100,6 @@ public class Demo : MonoBehaviour
 
     void DefineSkills()
     {
-        //TODO
-
         // add every word as a skill
         foreach (List<string> row in verbs)
         {
@@ -122,7 +121,30 @@ public class Demo : MonoBehaviour
 
     void DefineItems()
     {
-        //TODO every row is an item
+        Dictionary<int, string> formRows = new Dictionary<int, string> {
+            {(int)Column.FirstSingularForm, "FirstSingular" },
+            {(int)Column.SecondSingularForm, "SecondSingular" },
+            {(int)Column.ThirdSingularForm, "ThirdSingular" },
+            {(int)Column.FirstPluralForm, "FirstPlural" },
+            {(int)Column.SecondPluralForm, "SecondPlural" },
+            {(int)Column.ThirdPluralForm, "ThirdPlural" }
+        };
+
+        // every form of every row is an item
+        foreach (List<string> row in verbs)
+        {
+            foreach (KeyValuePair<int, string> form in formRows)
+            {
+                Skill formSkill = spanish.GetSkillByName(form.Value);
+                Skill tenseSkill = spanish.GetSkillByName(row[(int)Column.TenseEnglish]);
+                Skill moodSkill = spanish.GetSkillByName(row[(int)Column.MoodEnglish]);
+                Skill wordSkill = spanish.GetSkillByName(row[(int)Column.Infinitive]);
+                List<Skill> allSkills = new List<Skill>() { formSkill, tenseSkill, moodSkill, wordSkill };
+
+                SpanishPracticeItem item = new SpanishPracticeItem(allSkills, row);
+                allItems.Add(item);
+            }
+        }
     }
 
     /// <summary>

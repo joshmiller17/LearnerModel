@@ -28,5 +28,11 @@ namespace JoshAaronMiller.LearnerModel
                 skillMasteries.Add(skill, 0);
             }
         }
+
+        public void LogPractice(Item item, float outcome)
+        {
+            //TODO record item to item history
+            // for each skill, record skill to skill history
+        }
     }
 }

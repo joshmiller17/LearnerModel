@@ -25,11 +25,27 @@ namespace JoshAaronMiller.LearnerModel
         /// </summary>
         DefaultDictionary<Item, int> confusionCounts = new DefaultDictionary<Item, int>();
 
+        static readonly float defaultDifficulty = 1;
+
         Guid guid;
 
-        public Item()
+        public Item(List<Skill> skills)
         {
             guid = Guid.NewGuid();
+            foreach (Skill s in skills)
+            {
+                skillsToDifficulties[s] = defaultDifficulty;
+            }
+        }
+
+        public void UpdateSkill(Skill skill, float difficulty)
+        {
+            skillsToDifficulties[skill] = difficulty;
+        }
+
+        public void LogConfusion(Item confusedWith)
+        {
+            confusionCounts[confusedWith] += 1;
         }
     }
 }
