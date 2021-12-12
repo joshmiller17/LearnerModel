@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,13 +14,15 @@ namespace JoshAaronMiller.LearnerModel
             learners.Add(learner);
         }
 
-        public Skill RecommendSkill(Learner learner)
+        public List<Skill> RecommendSkills(Learner learner, int howMany = 1)
         {
+            DateTime now = DateTime.UtcNow;
+
             //TODO
             return null;
         }
 
-        public Item RecommendItem(Learner learner, List<Skill> requiredSkills = null)
+        public List<Item> RecommendItems(Learner learner, List<Skill> requiredSkills = null, int howMany = 1)
         {
             //TODO
             return null;
@@ -28,6 +31,7 @@ namespace JoshAaronMiller.LearnerModel
         public List<Item> GetCommonConfusions(Item item, int howMany = 3)
         {
             //TODO
+            // ensure this item is never returned as confused with
             return null;
         }
 
@@ -35,6 +39,7 @@ namespace JoshAaronMiller.LearnerModel
         {
             //TODO
             // sort items by number of overlapping skills, return highest
+            // ensure this item is never returned as similar
             return null;
         }
     }

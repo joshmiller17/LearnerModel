@@ -70,8 +70,10 @@ public class Demo : MonoBehaviour
 
     Text question;
     List<Text> options;
+    Item currentItem;
     int correctOption;
 
+    LearnerModel learnerModel;
     Learner learner;
     Skillset spanish;
     List<SpanishPracticeItem> allItems = new List<SpanishPracticeItem>();
@@ -92,7 +94,10 @@ public class Demo : MonoBehaviour
         }
 
         //TODO try loading, only define these if no load available
+        learnerModel = new LearnerModel();
         learner = new Learner();
+        learnerModel.AddLearner(learner);
+
         spanish = new Skillset();
         DefineSkills();
         DefineItems();
@@ -170,7 +175,8 @@ public class Demo : MonoBehaviour
     /// <param name="optionSelected">The index of their selected option.</param>
     public void AnswerCallback(int optionSelected)
     {
-        //TODO log the answer with the learner model
+        int outcome = optionSelected == correctOption ? 1 : 0;
+        learner.LogPractice(currentItem, outcome);
 
         // TODO visual feedback for right or wrong with correct answer
 
@@ -184,9 +190,14 @@ public class Demo : MonoBehaviour
     /// </summary>
     void ConstructQuestion()
     {
-        //TODO pick a question type using learner model
+        // pick a question type using learner model
+        List<Skill> skillsToPractice = learnerModel.RecommendSkills(learner, howMany : 1);
 
-        //TODO generate options using learner model
+        List<Item> itemstoPractice = learnerModel.RecommendItems(learner, skillsToPractice, howMany : 1);
+
+        // generate options using learner model
+        List<Item> frequentlyConfused = learnerModel.GetCommonConfusions(itemstoPractice[0], howMany:3);
+        List<Item> relatedItems = learnerModel.GetSimilarItems(itemstoPractice[0], howMany: 3);
 
         //TODO call DisplayQuestion
 
@@ -197,7 +208,7 @@ public class Demo : MonoBehaviour
     /// Show the question.
     /// </summary>
     /// <param name="q">Question text.</param>
-    /// <param name="os">Option texts.</param>
+    /// <param name="o">Option texts.</param>
     void DisplayQuestion(string q, List<string> o)
     {
         question.text = q;
