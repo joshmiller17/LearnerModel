@@ -70,6 +70,9 @@ public class Demo : MonoBehaviour
     List<Text> options;
     int correctOption;
 
+    Learner learner;
+    Skillset spanish;
+
     void Start()
     {
         verbs = ReadCsv(DataCsv);
@@ -86,6 +89,8 @@ public class Demo : MonoBehaviour
         }
 
         //TODO try loading, only define these if no load available
+        learner = new Learner();
+        spanish = new Skillset();
         DefineSkills();
         DefineItems();
     }

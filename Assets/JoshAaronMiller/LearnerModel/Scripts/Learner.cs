@@ -20,5 +20,13 @@ namespace JoshAaronMiller.LearnerModel
         {
             guid = Guid.NewGuid();
         }
+
+        public void AddSkillset(Skillset skillset)
+        {
+            foreach (Skill skill in skillset.GetSkills())
+            {
+                skillMasteries.Add(skill, 0);
+            }
+        }
     }
 }
