@@ -11,6 +11,6 @@ namespace JoshAaronMiller.LearnerModel
     [Serializable]
     public class History
     {
-        Dictionary<DateTime, float> timestampsToOutcomes = new Dictionary<DateTime, float>();
+        public Dictionary<DateTime, float> TimestampsToOutcomes = new Dictionary<DateTime, float>();
     }
 }

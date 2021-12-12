@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 using static JoshAaronMiller.LearnerModel.Utilities;
 
 namespace JoshAaronMiller.LearnerModel
@@ -41,6 +42,11 @@ namespace JoshAaronMiller.LearnerModel
         public void UpdateSkill(Skill skill, float difficulty)
         {
             skillsToDifficulties[skill] = difficulty;
+        }
+
+        public List<Skill> GetSkills()
+        {
+            return skillsToDifficulties.Keys.ToList();
         }
 
         public void LogConfusion(Item confusedWith)

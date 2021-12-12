@@ -31,8 +31,13 @@ namespace JoshAaronMiller.LearnerModel
 
         public void LogPractice(Item item, float outcome)
         {
-            //TODO record item to item history
-            // for each skill, record skill to skill history
+            DateTime now = DateTime.UtcNow;
+            itemHistories[item].TimestampsToOutcomes[now] = outcome;
+
+            foreach (Skill skill in item.GetSkills())
+            {
+                skillHistories[skill].TimestampsToOutcomes[now] = outcome;
+            }
         }
     }
 }
